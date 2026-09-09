@@ -102,6 +102,21 @@ function heal(maxHp, currentHp, healAmount) {
  */
 function getProficiencyBonus(level, rank) {
   // TODO
+  if (rank === "untrained") {
+    return level;
+  } else if (rank === "trained") {
+    let bonus = level + 2;
+    return bonus;
+  } else if (rank === "expert") {
+    bonus = level + 4;
+    return bonus;
+  } else if (rank === "master") {
+    bonus = level + 6;
+    return bonus;
+  } else if (rank === "legendary") {
+    bonus = level + 8;
+    return bonus;
+  }
 }
 
 /**
@@ -165,4 +180,5 @@ const hidingState = isHidden(true, true);
 const strikeHit = doesStrikeHit(10, 30);
 const strikeCrit = doesStrikeCrit(21, 11);
 const hpState = heal(50, 40, 20);
-console.log(hpState);
+const proficiencyBonus = getProficiencyBonus(22, "master");
+console.log(proficiencyBonus);

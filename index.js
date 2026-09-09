@@ -144,7 +144,14 @@ function getCoverBonus(behindObstacle, takingCover) {
  * @returns {number} the creature's remaining HP after taking damage
  */
 function getRemainingHp(maxHp, currentHp, damage) {
-  // TODO
+  if (damage >= maxHp * 2) {
+    return -1;
+  } else if (maxHp <= currentHp - damage) {
+    return 0;
+  } else {
+    const remainingHp = currentHp - damage;
+    return remainingHp;
+  }
 }
 
 /**
@@ -180,3 +187,4 @@ const strikeCrit = doesStrikeCrit(21, 11);
 const hpState = heal(50, 40, 20);
 const proficiencyBonus = getProficiencyBonus(22, "master");
 const coverBonus = getCoverBonus(true, false);
+const remainingHealth = getRemainingHp(200, 150, 50);

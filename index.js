@@ -43,6 +43,11 @@ function isHidden(hiding, aware) {
  */
 function doesStrikeHit(attack, ac) {
   // TODO
+  if (attack >= ac) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 /**
@@ -54,6 +59,11 @@ function doesStrikeHit(attack, ac) {
  */
 function doesStrikeCrit(attack, ac) {
   // TODO
+  if (attack >= ac + 10) {
+    return `Crit Hit`;
+  } else {
+    return `No Crit`;
+  }
 }
 
 /**
@@ -146,3 +156,5 @@ function getStrikeDamage(attack, ac, damage) {
 
 const spellCast = canCastSpell(false, true);
 const hidingState = isHidden(true, true);
+const strikeHit = doesStrikeHit(10, 30);
+const strikeCrit = doesStrikeCrit(21, 11);

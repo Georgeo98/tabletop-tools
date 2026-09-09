@@ -76,6 +76,12 @@ function doesStrikeCrit(attack, ac) {
  */
 function heal(maxHp, currentHp, healAmount) {
   // TODO
+  if (currentHp + healAmount >= maxHp) {
+    return maxHp;
+  } else {
+    hpAfterHeal = currentHp + healAmount;
+    return hpAfterHeal;
+  }
 }
 
 /**
@@ -158,3 +164,5 @@ const spellCast = canCastSpell(false, true);
 const hidingState = isHidden(true, true);
 const strikeHit = doesStrikeHit(10, 30);
 const strikeCrit = doesStrikeCrit(21, 11);
+const hpState = heal(50, 40, 20);
+console.log(hpState);

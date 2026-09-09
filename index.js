@@ -163,7 +163,17 @@ function getRemainingHp(maxHp, currentHp, damage) {
  * @returns {boolean} whether the creature can see
  */
 function canSee(light, vision) {
-  // TODO
+  if (vision === "average" && light === "bright") {
+    return true;
+  } else if (vision === "average" && light !== "bright") {
+    return false;
+  } else if (vision === "low-light" && light !== "dark") {
+    return true;
+  } else if (vision === "low-light" && light === "dark") {
+    return false;
+  } else if (vision === "dark") {
+    return true;
+  }
 }
 
 /**
@@ -188,3 +198,4 @@ const hpState = heal(50, 40, 20);
 const proficiencyBonus = getProficiencyBonus(22, "master");
 const coverBonus = getCoverBonus(true, false);
 const remainingHealth = getRemainingHp(200, 150, 50);
+const seeAbility = canSee("bright", "average");

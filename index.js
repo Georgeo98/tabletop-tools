@@ -7,6 +7,11 @@
  */
 function canCastSpell(isSpellPrepared, hasScroll) {
   // TODO
+  if (isSpellPrepared === true || hasScroll === true) {
+    return "You can cast Spell";
+  } else {
+    return "Spell is not ready!";
+  }
 }
 
 /**
@@ -18,6 +23,15 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  */
 function isHidden(hiding, aware) {
   // TODO
+  if (hiding === true && aware === true) {
+    return `Hiding from creature and aware`;
+  } else if (hiding === false && aware === true) {
+    return `Only aware`;
+  } else if (hiding === true && aware === false) {
+    return `Hiding and unaware`;
+  } else {
+    return `Out in the Open and unaware`;
+  }
 }
 
 /**
@@ -129,3 +143,6 @@ function canSee(light, vision) {
 function getStrikeDamage(attack, ac, damage) {
   // TODO
 }
+
+const spellCast = canCastSpell(false, true);
+const hidingState = isHidden(true, true);

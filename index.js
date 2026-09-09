@@ -6,7 +6,6 @@
  * @returns {boolean} whether the wizard can cast the spell
  */
 function canCastSpell(isSpellPrepared, hasScroll) {
-  // TODO
   if (isSpellPrepared === true || hasScroll === true) {
     return "You can cast Spell";
   } else {
@@ -22,7 +21,6 @@ function canCastSpell(isSpellPrepared, hasScroll) {
  * @returns {boolean} whether the creature is hidden from the observer
  */
 function isHidden(hiding, aware) {
-  // TODO
   if (hiding === true && aware === true) {
     return `Hiding from creature and aware`;
   } else if (hiding === false && aware === true) {
@@ -42,7 +40,6 @@ function isHidden(hiding, aware) {
  * @returns {boolean} whether the strike hits
  */
 function doesStrikeHit(attack, ac) {
-  // TODO
   if (attack >= ac) {
     return true;
   } else {
@@ -58,7 +55,6 @@ function doesStrikeHit(attack, ac) {
  * @returns {boolean} whether the strike is a critical hit
  */
 function doesStrikeCrit(attack, ac) {
-  // TODO
   if (attack >= ac + 10) {
     return `Crit Hit`;
   } else {
@@ -75,7 +71,6 @@ function doesStrikeCrit(attack, ac) {
  * @returns {number} total hit points after healing
  */
 function heal(maxHp, currentHp, healAmount) {
-  // TODO
   if (currentHp + healAmount >= maxHp) {
     return maxHp;
   } else {
@@ -101,7 +96,6 @@ function heal(maxHp, currentHp, healAmount) {
  * @returns {number} the character's proficiency bonus
  */
 function getProficiencyBonus(level, rank) {
-  // TODO
   if (rank === "untrained") {
     return level;
   } else if (rank === "trained") {
@@ -130,7 +124,11 @@ function getProficiencyBonus(level, rank) {
  * @returns {number} the cover bonus to AC
  */
 function getCoverBonus(behindObstacle, takingCover) {
-  // TODO
+  if (behindObstacle === true && takingCover === false) {
+    return 2;
+  } else if (takingCover === true) {
+    return 4;
+  }
 }
 
 /**
@@ -181,4 +179,4 @@ const strikeHit = doesStrikeHit(10, 30);
 const strikeCrit = doesStrikeCrit(21, 11);
 const hpState = heal(50, 40, 20);
 const proficiencyBonus = getProficiencyBonus(22, "master");
-console.log(proficiencyBonus);
+const coverBonus = getCoverBonus(true, false);

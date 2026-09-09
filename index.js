@@ -56,9 +56,9 @@ function doesStrikeHit(attack, ac) {
  */
 function doesStrikeCrit(attack, ac) {
   if (attack >= ac + 10) {
-    return `Crit Hit`;
+    return true;
   } else {
-    return `No Crit`;
+    return false;
   }
 }
 
@@ -187,7 +187,14 @@ function canSee(light, vision) {
  * @returns {number} damage dealt by the strike
  */
 function getStrikeDamage(attack, ac, damage) {
-  // TODO
+  if (doesStrikeCrit(attack, ac) === true) {
+    let damageDealt = attack * 2;
+    return damageDealt;
+  } else if (doesStrikeHit(attack, ac) === true) {
+    return attack;
+  } else if (doesStrikeHit(attack, ac) === false) {
+    return 0;
+  }
 }
 
 const spellCast = canCastSpell(false, true);
@@ -199,3 +206,4 @@ const proficiencyBonus = getProficiencyBonus(22, "master");
 const coverBonus = getCoverBonus(true, false);
 const remainingHealth = getRemainingHp(200, 150, 50);
 const seeAbility = canSee("bright", "average");
+const attackDamage = getStrikeDamage(10, 15);
